@@ -12,19 +12,39 @@ import {
   View
 } from 'react-native';
 
+var Tab = require('./react-native-tab');
+
 class example extends Component {
-  render() {
+    constrctor(){
+        this.state = {
+            index: 0,
+        };
+        this._handleClick = this._handleClick.bind(this);
+    }
+    
+    _handleClick(idx) {
+        this.state.index = idx;
+    }
+    
+    _renderText() {
+        let customStyle = [styles.welcome];
+        if(this.state.index==1) {
+            customStyle.push(styles.weclome2);
+        }
+        return (
+            <Text style={customStyle}>
+              Welcome to React Native!
+            </Text>
+        );
+    }
+    
+    render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
+        <Tab idx={this.state.index} tabstr="Tab1,Tab2" tabClick={()=>this._handleClick(idx)}></Tab>
+        {this._renderText()}
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
         </Text>
       </View>
     );
@@ -43,6 +63,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
+  weclome2: {
+    color: 'red',
+  },    
   instructions: {
     textAlign: 'center',
     color: '#333333',
