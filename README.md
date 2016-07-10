@@ -1,6 +1,6 @@
-# react-native-tab
+# react-native-horizontal-tab
 
-`react-native-tab`is built to provide a simple tab ui and event.
+`react-native-horizontal-tab`is built to provide a simple tab ui and event.
 
 
 ### start
