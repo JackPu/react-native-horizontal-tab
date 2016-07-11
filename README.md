@@ -2,7 +2,7 @@
 
 `react-native-horizontal-tab`is built to provide a simple tab ui and event.
 
-<img src="http://img1.vued.vanthink.cn/vued1ebd6bbd9eda783395faa96518884250.gif" />
+<img src="./screenshots/tab-gif.gif" />
 
 
 [Demo](https://github.com/JackPu/react-native-horizontal-tab/blob/master/example/index.ios.js)
