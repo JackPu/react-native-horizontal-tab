@@ -3,74 +3,68 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+'use strict';
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
+var Css = require('./css');
+var Tab = require('react-native-horizontal-tab');
 
-var Tab = require('./react-native-tab');
-
-class example extends Component {
-    constrctor(){
+let cutemars = require('./images/mars_200.png');
+let cutecomputers = require('./images/cute-emoji-computer_200.png');
+class example extends React.Component {
+    constructor(props){
+        super(props)
         this.state = {
-            index: 0,
+            idx: 0,
         };
         this._handleClick = this._handleClick.bind(this);
     }
     
     _handleClick(idx) {
-        this.state.index = idx;
+        this.setState({
+            idx:idx
+        });
     }
     
     _renderText() {
-        let customStyle = [styles.welcome];
-        if(this.state.index==1) {
-            customStyle.push(styles.weclome2);
+        let customStyle = [Css.welcome];
+        let imageSrc = cutemars;
+        if(this.state.idx==1) {
+            customStyle.push(Css.weclome2);
+            imageSrc = cutecomputers;
         }
         return (
-            <Text style={customStyle}>
-              Welcome to React Native!
-            </Text>
+            <View style={{alignItems:'center'}}>
+                <Image source={imageSrc} style={Css.thumb} />
+                <Text style={customStyle}>
+                  This is Tab {this.state.idx + 1}
+                </Text>
+            </View>
         );
     }
     
     render() {
-    return (
-      <View style={styles.container}>
-        <Tab idx={this.state.index} tabstr="Tab1,Tab2" tabClick={()=>this._handleClick(idx)}></Tab>
-        {this._renderText()}
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-      </View>
-    );
+        return (
+          <View style={Css.container}>
+            <View style={Css.navbar}>
+                <Text style={Css.navbarText}>react-native-horizontal-tab</Text>
+            </View>
+            <View style={Css.main}>
+                <Tab idx={this.state.idx} tabstr="Tab1,Tab2" tabClick={(idx)=>this._handleClick(idx)}></Tab>
+            {this._renderText()}
+            </View>
+            
+          </View>
+        );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  weclome2: {
-    color: 'red',
-  },    
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+
 
 AppRegistry.registerComponent('example', () => example);

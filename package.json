@@ -1,6 +1,6 @@
 {
-  "name": "react-native-tab",
-  "version": "1.0.0",
+  "name": "react-native-horizontal-tab",
+  "version": "0.9.1",
   "description": "a react native tab",
   "main": "index.js",
   "scripts": {
