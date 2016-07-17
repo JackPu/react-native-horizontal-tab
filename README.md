@@ -11,7 +11,7 @@
 ### start
 
 ``` bash
-npm install react-native-horizontal-tab --save-dev
+npm install react-native-horizontal-tab --save
 ```
 how to use it?
 
